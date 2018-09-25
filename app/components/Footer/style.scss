@@ -1,14 +1,24 @@
 footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 3em 0;
-  border-top: 1px solid #666;
+  color: rgba(157, 165, 180, 0.6);
 
-  a {
-    color: #41addd;
-  
-    &:hover {
-      color: #6cc0e5;
+  ul{
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: middle;
+
+    & li{
+      display: inline;
+    }
+  }
+  .fab{
+    color: rgba(157, 165, 180, 0.6);
+    font-size: 20px;
+  }
+  .right{
+    float: right;
+
+    li a{
+      margin-right: 10px;
     }
   }
 }

@@ -1,9 +1,9 @@
-.feature-page {
+.portfolio-page {
   h1 {
     font-size: 2em;
     margin-bottom: 0.25em;
   }
-  
+
   ul {
     font-family: Georgia, Times, 'Times New Roman', serif;
     padding-left: 1.75em;
@@ -15,5 +15,18 @@
         font-weight: bold;
       }
     }
+  }
+  .object-items{
+    margin-left: 27px;
+
+    .fa-caret-right{
+      cursor: pointer;
+    }
+  }
+  .hide-details{
+    display: none;
+  }
+  .show-details{
+    display: block;
   }
 }

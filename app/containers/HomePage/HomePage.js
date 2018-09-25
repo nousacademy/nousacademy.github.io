@@ -6,27 +6,34 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
+import Typist from 'react-typist';
 import './style.scss';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
+export default class HomePage extends React.Component {
+
+   state = {
+    githubData: [],
+    showLogElement: false
+  }
+
   componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
+
+    axios.get(`https://api.github.com/users/nousacademy`)
+      .then(res => {
+        const githubData = res.data;
+        this.setState({ githubData });
+      });
+
+  }
+
+  typingDone = () =>{
+    this.setState({ showLogElement: true });
   }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
 
     return (
       <article>
@@ -34,45 +41,46 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <title>Home Page</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
-        <div className="home-page">
-          <section className="centered">
-            <h2>Start your next react project in seconds</h2>
-            <p>A minimal <i>React-Redux</i> boilerplate with all the best practices</p>
-          </section>
-          <section>
-            <h2>Try me!</h2>
-            <form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-              Show Github repositories by
-                <span className="at-prefix">@</span>
-                <input
-                  id="username"
-                  type="text"
-                  placeholder="flexdinesh"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </form>
-            <ReposList {...reposListProps} />
+        <div id="main" className="home-page">
+          <section className="editor">
+            <Typist onTypingDone={this.typingDone}>
+              <div className="container">
+                <code className="import-statement">import </code>
+                <code>&#123; </code>
+                <code className="module-statement">Profile </code>
+                <code>&#125; </code>
+                <code className="import-statement">from </code>
+                <code className="string-statement">"./github.com/nousacademy"</code>
+                <code>;</code>
+              </div>
+              <div>
+                <code className="entity-statement">console</code>
+                <code>.</code>
+                <code className="function-statement">log</code>
+                <code>(Profile);</code>
+              </div>
+            </Typist>
+            <br/>
+            {this.state.showLogElement ? (
+              <div className="logger">
+                <code>&#123; </code>
+                name : <code className="string-statement">"{this.state.githubData.name}"</code>,
+                <br/>
+                bio : <code className="string-statement">"{this.state.githubData.bio}"</code>,
+                <br/>
+                location : <code className="string-statement">"{this.state.githubData.location}"</code>,
+                <br/>
+                github_url : <a href={this.state.githubData.html_url} className="string-statement" target="_blank"><code>"{this.state.githubData.html_url}"</code></a>,
+                <br/>
+                owner_and_creator_of : <a href={this.state.githubData.blog} className="string-statement" target="_blank"><code>"{this.state.githubData.blog}"</code></a>,
+                <br/>
+                hireable : <code className="entity-statement">{this.state.githubData.hireable.toString()}</code>
+                <code> &#125;</code>
+              </div>
+          ) : null }
           </section>
         </div>
       </article>
     );
   }
 }
-
-HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool,
-  ]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
-};

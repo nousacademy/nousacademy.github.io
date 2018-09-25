@@ -1,19 +1,7 @@
 .home-page {
-  
+
   h2 {
     font-size: 1.5em;
-  }
-  
-  section {
-    margin: 3em auto;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &.centered {
-      text-align: center;
-    }
   }
 
   form {
@@ -24,9 +12,9 @@
       border-bottom: 1px dotted #999;
     }
   }
-
   span.at-prefix {
     color: black;
     margin-left: 0.4em;
   }
+
 }

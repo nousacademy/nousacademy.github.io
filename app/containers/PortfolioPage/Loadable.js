@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for FeaturePage
+ * Asynchronously loads the component for PortfolioPage
  */
 import Loadable from 'react-loadable';
 

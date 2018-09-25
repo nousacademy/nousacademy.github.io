@@ -1,23 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Banner from './images/banner.jpg';
+import { NavLink } from 'react-router-dom';
+// import Banner from './images/banner.jpg';
 import './style.scss';
+
+let navData = [{path: "/", text: "Home"}, {path: "/portfolio", text: "Portfolio"}, {path: "/resume", text: "Resume"}];
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="header">
-        <a href="https://twitter.com/flexdinesh">
-          <img src={Banner} alt="react-redux-boilerplate - Logo" />
-        </a>
-        <div className="nav-bar">
-          <Link className="router-link" to="/">
-            Home
-          </Link>
-          <Link className="router-link" to="/features">
-            Features
-          </Link>
-        </div>
+        <ul className="nav-bar">
+          {navData.map((item, index) =>
+            <li className="nav-item" key={index}>
+              <NavLink to={item.path} exact>{item.text}</NavLink>
+            </li>)}
+        </ul>
       </div>
     );
   }

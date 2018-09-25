@@ -11,6 +11,7 @@ import { makeSelectUsername } from 'containers/HomePage/selectors';
 
 /**
  * Github repos request/response handler
+ https://api.github.com/users/nousacademy
  */
 export function* getRepos() {
   // Select username from store

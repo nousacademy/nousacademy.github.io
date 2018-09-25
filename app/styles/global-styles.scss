@@ -13,13 +13,52 @@ body.fontLoaded {
 }
 
 #app {
-  background-color: #fafafa;
+  background-color: rgb(0, 0, 0);
+  color: white;
   min-height: 100%;
   min-width: 100%;
+}
+
+#main{
+  // editor display
+  section.editor {
+    margin: 26px 10px 49px 43px;
+  }
 }
 
 p,
 label {
   font-family: Georgia, Times, 'Times New Roman', serif;
   line-height: 1.5em;
+}
+article{
+  background-color: rgb(40, 44, 52);
+}
+.import-statement{
+  color: #c678dd;
+}
+.module-statement{
+  color: #e06c75;
+}
+.string-statement{
+  color: #98c379;
+}
+.entity-statement{
+  color: #e5c07b;
+}
+.function-statement{
+  color: #56b6c2;
+}
+.syntax--constant{
+  color: #d19a66;
+}
+.syntax--operator{
+  color: #56b6c2;
+}
+.syntax--function{
+  color: #61afef;
+}
+// hide typist cursor
+.Cursor{
+  display: none;
 }

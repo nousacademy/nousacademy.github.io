@@ -6,29 +6,37 @@
   }
 
   .nav-bar {
-    text-align: center;
+    list-style-type: none;
+    padding: 0;
   }
 
-  .router-link {
-    display: inline-flex;
-    padding: 0.25em 2em;
-    margin: 1em;
-    text-decoration: none;
-    border-radius: 4px;
-    -webkit-font-smoothing: antialiased;
-    -webkit-touch-callout: none;
-    user-select: none;
-    cursor: pointer;
-    outline: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    border: 2px solid #41ADDD;
-    color: #41ADDD;
+  .nav-item{
+    display: inline-block;
 
-    &:active {
-      background: #41ADDD;
-      color: #FFF;
+
+    & a{
+      padding: 18px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-touch-callout: none;
+      user-select: none;
+      cursor: pointer;
+      outline: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      color: rgba(157, 165, 180, 0.6);
+
+      &.active{
+        background: rgb(40, 44, 52);
+        color: white;
+      }
     }
   }
+
+
+  // .active{
+  //   background: 'rgb(40, 44, 52)';
+  //   color: 'white'
+  // }
 }
