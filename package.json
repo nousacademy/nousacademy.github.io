@@ -1,6 +1,7 @@
 {
   "name": "react-redux-boilerplate",
   "version": "1.0.0",
+  "homepage": "http://nousacademy.github.io/",
   "description": "A minimal react-redux boilerplate with all the best practices",
   "repository": {
     "type": "git",
@@ -16,6 +17,8 @@
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "start": "cross-env NODE_ENV=development node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
@@ -95,6 +98,7 @@
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
     "file-loader": "1.1.11",
+    "gh-pages": "^2.0.0",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "image-webpack-loader": "^4.3.1",
