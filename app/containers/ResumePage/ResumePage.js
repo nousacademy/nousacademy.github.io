@@ -32,9 +32,11 @@ export default class PortfolioPage extends React.Component {
               <code className="syntax--function">is_recruiter</code>
               <code>&#40;&#41; </code>
               <code>&#41; </code>
-              <button id="download-pdf">
-                <code>Download Resume PDF</code>
-              </button>
+              <a href="resume.pdf" download>
+                <button id="download-pdf">
+                  <code>Download Resume PDF</code>
+                </button>
+              </a>
             </Typist>
           </section>
         </div>
