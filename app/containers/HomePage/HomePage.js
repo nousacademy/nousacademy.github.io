@@ -38,8 +38,8 @@ export default class HomePage extends React.Component {
     return (
       <article>
         <Helmet>
-          <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <title>The Architect&#39;s Portfolio Site</title>
+          <meta name="description" content="Home page for The Architect" />
         </Helmet>
         <div id="main" className="home-page">
           <section className="editor">

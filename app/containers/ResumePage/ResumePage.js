@@ -6,22 +6,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Typist from 'react-typist';
-// import ResumePdf from './resume.pdf';
 import './style.scss';
 
-// console.log(ResumePdf);
 export default class PortfolioPage extends React.Component {
-
-  downloadResume = () => {
-    console.log('hello')
-
-  }
 
   render() {
     return (
       <article>
         <Helmet>
-          <title>Portfolio</title>
+          <title>Resume</title>
           <meta name="description" content="Resume page for The Architect"/>
         </Helmet>
         <div id="main" className="resume-page">

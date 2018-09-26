@@ -1,1 +1,1 @@
-Portfolio website
+This is the code for my portfolio site, I made it so recruiters can stop bothering me about sending them my resume. I build it using React v15, you can view it by visiting https://nousacademy.github.io/.

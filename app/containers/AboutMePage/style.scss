@@ -1,0 +1,18 @@
+.about-me-page{
+  .console-error{
+    color: rgb(213, 56, 56);
+    border: 1px solid rgb(255, 0, 0);
+    background: rgb(50, 6, 6);
+    padding: 5px;
+
+
+    .fa-times-circle{
+      color: red;
+      background: rgb(255, 255, 255);
+      border-radius: 50%;
+    }
+    .error-msg{
+      margin-left: 15px;
+    }
+  }
+}

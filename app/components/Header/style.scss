@@ -13,8 +13,7 @@
   .nav-item{
     display: inline-block;
 
-
-    & a{
+    & a {
       padding: 18px;
       -webkit-font-smoothing: antialiased;
       -webkit-touch-callout: none;
@@ -27,16 +26,12 @@
       text-decoration: none;
       color: rgba(157, 165, 180, 0.6);
 
-      &.active{
+      &.active,
+      &:hover {
         background: rgb(40, 44, 52);
         color: white;
       }
     }
   }
 
-
-  // .active{
-  //   background: 'rgb(40, 44, 52)';
-  //   color: 'white'
-  // }
 }

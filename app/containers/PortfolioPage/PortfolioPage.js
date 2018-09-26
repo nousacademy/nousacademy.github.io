@@ -25,7 +25,7 @@ export default class PortfolioPage extends React.Component {
    if(id === this.state.activeId){
      this.setState({activeId: null});
    }else{
-     this.setState({activeId: id})
+     this.setState({activeId: id});
    }
 }
 
@@ -35,7 +35,7 @@ export default class PortfolioPage extends React.Component {
       <article>
         <Helmet>
           <title>Portfolio</title>
-          <meta name="description" content="Portfolio page of React.js Boilerplate application"/>
+          <meta name="description" content="Portfolio page for The Architect"/>
         </Helmet>
         <div id="main" className="portfolio-page">
           <section className="editor">
@@ -85,7 +85,7 @@ export default class PortfolioPage extends React.Component {
                         <div className="logger" key={index}>
                             {this.state.showLogElement ?
                                 <div className="object-items">
-                                  <i className="fas fa-caret-right" onClick={() => this.showFullObject(index)}></i>
+                                  <i className={`fas ${index === this.state.activeId ? 'fa-caret-down' : 'fa-caret-right'}`} onClick={() => this.showFullObject(index)}></i>
                                   <code> &#123; </code>
                                   <code>project_type: </code>
                                   <code className="string-statement">"{item.project_type}" </code>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 // import Banner from './images/banner.jpg';
 import './style.scss';
 
-let navData = [{path: "/", text: "Home"}, {path: "/portfolio", text: "Portfolio"}, {path: "/resume", text: "Resume"}];
+let navData = [{path: "/", text: "Home"}, {path: "/portfolio", text: "Portfolio"}, {path: "/resume", text: "Resume"}, {path: "/about", text: "About"}];
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

@@ -2,11 +2,6 @@
 coverage
 node_modules
 stats.json
-# individual generated js files
-1.*
-2.*
-3.*
-4.*
 
 # Cruft
 .DS_Store
