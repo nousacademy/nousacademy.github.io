@@ -1,0 +1,20 @@
+name: Deploy Worker (dev)
+
+on:
+  push:
+    branches: ["dev"]
+    paths:
+      - "apps/api/**"
+      - ".github/workflows/deploy-worker-dev.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: "apps/api"
+          command: "deploy"

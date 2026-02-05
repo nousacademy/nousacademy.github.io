@@ -1,0 +1,21 @@
+name: Deploy Worker (apps/api)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "apps/api/**"
+      - ".github/workflows/deploy-worker.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Deploy from the apps/api directory (monorepo-safe)
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: "apps/api"
+          command: "deploy"

@@ -1,0 +1,14 @@
+{
+    "name": "bodymap-api",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+      "dev": "wrangler dev --port 8787",
+      "dev:remote": "wrangler dev --remote --port 8787",
+      "deploy": "wrangler deploy"
+    },
+    "devDependencies": {
+      "wrangler": "3.78.9"
+    }
+  }

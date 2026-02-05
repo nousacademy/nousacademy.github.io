@@ -1,0 +1,5 @@
+name = "bodymap-api"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+# public API, no bindings needed yet

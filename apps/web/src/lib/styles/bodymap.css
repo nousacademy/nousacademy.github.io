@@ -1,0 +1,110 @@
+/* Layout wrapper */
+.bodymap-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media (min-width: 900px) {
+    .bodymap-wrap {
+        grid-template-columns: 1fr 360px;
+        align-items: start;
+    }
+}
+
+.bodymap-panel {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 12px;
+    max-height: calc(100vh - 24px);
+    overflow: auto;
+}
+
+.bodymap-panel__header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.bodymap-panel__title {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.bodymap-panel__close {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.bodymap-panel__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+}
+
+.bodymap-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #f2f2f2;
+    border: 1px solid #e6e6e6;
+}
+
+.bodymap-panel__desc {
+    margin: 10px 0 0;
+    line-height: 1.5;
+    color: #222;
+}
+
+.bodymap-panel__hr {
+    margin: 14px 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+.bodymap-panel__subtitle {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: #444;
+}
+
+.bodymap-panel__list {
+    margin: 0;
+    padding-left: 16px;
+}
+
+.bodymap-link {
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    color: #111;
+}
+
+.bodymap-muted {
+    color: #777;
+}
+
+/* SVG pointer-events pattern */
+svg * {
+    pointer-events: none;
+}
+
+.hit {
+    pointer-events: all;
+    fill: transparent;
+    stroke: transparent;
+    cursor: pointer;
+}
