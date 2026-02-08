@@ -30,11 +30,7 @@ export const seferYetzirah: BodymapDataset = {
             title: 'Aleph — Axis of Breath',
             description:
                 'Aleph signifies balance, mediation, and breath. As the axis of the body, it governs equilibrium between opposing forces. Neither active nor passive, Aleph sustains life by maintaining proportion and rhythm. Through breath, it harmonizes fire and water, motion and stillness, ensuring that all action remains centered.',
-            contains: [
-                'heart',
-                'right_lung',
-                'left_lung'
-            ]
+            contains: []
         },
         {
             type: 'region',
