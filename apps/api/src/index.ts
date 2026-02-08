@@ -1,27 +1,27 @@
-function json(data: unknown, status = 200) {
-    return new Response(JSON.stringify(data), {
-      status,
-      headers: { 'content-type': 'application/json; charset=utf-8' }
-    });
-  }
-  
-  export default {
-    async fetch(request: Request): Promise<Response> {
+import { corsPreflight, json, routeNotFound, internalError } from './utils/http';
+import { handleBodymap } from './router/bodymap';
+
+export default {
+  async fetch(request: Request): Promise<Response> {
+    try {
+      if (request.method === 'OPTIONS') return corsPreflight();
+
       const url = new URL(request.url);
-  
-      if (url.pathname === '/api/health') {
-        return json({ ok: true, env: 'dev' });
+
+      if (request.method === 'GET' && url.pathname === '/api/health') {
+        return json({ ok: true });
       }
-  
-      if (url.pathname === '/api/bodymap') {
-        return json({
-          ok: true,
-          source: 'worker',
-          // later: return SY / Odyssey datasets
-        });
+
+      if (url.pathname.startsWith('/api/v1/bodymap')) {
+        return handleBodymap(request, url);
       }
-  
-      return json({ ok: false, error: 'Not found', path: url.pathname }, 404);
+
+      return routeNotFound(url.pathname);
+    } catch (err) {
+      // You can log err later with Workers observability
+      return internalError(
+        err instanceof Error ? { name: err.name, message: err.message } : err
+      );
     }
-  };
-  
+  }
+};

@@ -24,3 +24,5 @@ export interface Body {
   font?: string;
   entities: BodyEntity[];
 }
+
+export type Region = 'front' | 'back';

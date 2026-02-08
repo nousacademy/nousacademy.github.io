@@ -264,19 +264,19 @@
     <!-- head -->
     <circle class="left_eyebrow" cx="440" cy="72" r="3" />
     <circle class="right_eyebrow" cx="392" cy="72" r="3" />
-    <circle class="left_brain" cx="395" cy="40" r="5" />
-    <circle class="right_brain" cx="435" cy="40" r="5" />
+    <circle class="left_brain brain" cx="395" cy="40" r="5" />
+    <circle class="right_brain brain" cx="435" cy="40" r="5" />
     <circle class="left_ear" cx="475" cy="100" r="5" />
     <circle class="right_ear" cx="356" cy="100" r="5" />
-    <circle class="left_eye" cx="440" cy="86" r="3" />
-    <circle class="right_eye" cx="392" cy="86" r="3" />
+    <circle class="left_eye eyes" cx="440" cy="86" r="3" />
+    <circle class="right_eye eyes" cx="392" cy="86" r="3" />
     <circle class="left_nostril" cx="427" cy="113" r="3" />
     <circle class="right_nostril" cx="405" cy="113" r="3" />
     <circle class="mouth" cx="415" cy="131" r="3" />
     <!-- diaphragm -->
     <circle class="heart" cx="420" cy="350" r="10" />
-    <circle class="right_lung" cx="375" cy="300" r="10" />
-    <circle class="left_lung" cx="460" cy="300" r="10" />
+    <circle class="right_lung lungs" cx="375" cy="300" r="10" />
+    <circle class="left_lung lungs" cx="460" cy="300" r="10" />
     <!-- torso -->
     <circle class="liver" cx="370" cy="415" r="10" />
     <circle class="stomach" cx="460" cy="430" r="10" />

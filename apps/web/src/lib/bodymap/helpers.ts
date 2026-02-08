@@ -1,4 +1,4 @@
-import type { Body, BodyEntity, BodyNode, BodyRegion } from './types';
+import type { Body, BodyEntity, BodyNode, BodyRegion, Region } from './types';
 
 export function buildLookups(body: Body) {
   const entitiesByKey = new Map<string, BodyEntity>();
@@ -31,10 +31,3 @@ export function findEntityKeyFromClassList(
   // Prefer node over region
   return classes.find((c) => nodeKeys.has(c)) ?? classes.find((c) => regionKeys.has(c)) ?? null;
 }
-
-export async function getHumanBodyKnowledge(region: string, source: string) {
-  const API_BASE = import.meta.env.PUBLIC_API_BASE;
-  const res = await fetch(`${API_BASE}/api/human/body/${region}?src=${source}`);
-  return res.json();
-}
-
