@@ -1,6 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/styles/bodymap.css';
+	import { bodymapSource } from '$lib/stores/bodymap';
 
 	let { children } = $props();
 </script>
@@ -30,14 +31,13 @@
 	<div class="right">
 		<label for="knowledge-set" class="sr-only"> Knowledge set </label>
 
-		<select id="knowledge-set" class="knowledge-select">
+		<select id="knowledge-set" class="knowledge-select" bind:value={$bodymapSource} aria-label="Select source">
 			<option value="sefer_yetzirah">Sefer Yetzirah</option>
-			<option value="odyssey">Odyssey</option>
+			<option value="phaedrus">Phaedrus</option>
+			<option value="hekhalot">Hekhalot</option>
 		</select>
 	</div>
 </header>
-
-<!-- <slot /> -->
 
 <main class="site-main">
 	{@render children()}

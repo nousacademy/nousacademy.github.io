@@ -1,10 +1,12 @@
 import { missingParam, invalidParam, internalError } from '../utils/http';
-import type { SourceModule } from './types';
+import type { SourceMeta, SourceModule } from './types';
 import type { BodymapDataset } from './data/types';
 import { makeSource } from './utils/makeSource';
 
+
+
 // Lazy dataset loaders (only load what’s requested)
-const DATASET_LOADERS: Record<string, () => Promise<BodymapDataset>> = {
+export const DATASET_LOADERS: Record<string, () => Promise<BodymapDataset>> = {
   sefer_yetzirah: async () => (await import('./data/sefer_yetzirah')).seferYetzirah,
   hekhalot: async () => (await import('./data/hekhalot')).hekhalot,
   phaedrus: async () => (await import('./data/phaedrus')).phaedrus
@@ -37,3 +39,19 @@ export async function requireSource(searchParams: URLSearchParams): Promise<Sour
     );
   }
 }
+
+export const SOURCE_META: Record<keyof typeof DATASET_LOADERS, SourceMeta> = {
+  sefer_yetzirah: {
+    label: 'Sefer Yetzirah',
+    regions: ['front', 'back']
+  },
+  phaedrus: {
+    label: 'Plato — Phaedrus',
+    regions: ['front', 'brain']
+  },
+  hekhalot: {
+    label: 'Hekhalot Literature',
+    regions: ['front', 'back']
+  }
+};
+

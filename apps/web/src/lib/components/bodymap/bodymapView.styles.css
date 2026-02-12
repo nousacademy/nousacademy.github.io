@@ -1,0 +1,12 @@
+/* everything in the injected SVG ignores clicks */
+svg * {
+    pointer-events: none;
+}
+
+/* only node hit targets accept clicks */
+svg circle, 
+svg rect {
+    fill: transparent;
+    pointer-events: all;
+    cursor: pointer;
+}

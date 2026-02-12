@@ -6,9 +6,14 @@
     "scripts": {
         "dev": "wrangler dev --port 8787",
         "dev:remote": "wrangler dev --remote --port 8787",
-        "deploy": "wrangler deploy"
+        "deploy": "wrangler deploy",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:unit": "vitest run tests/unit",
+        "test:integration": "TEST_BASE_URL='https://bodymap-api.alex-elkan5-6b9.workers.dev' vitest run tests/integration"
     },
     "devDependencies": {
+        "vitest": "^2.1.0",
         "wrangler": "3.78.9"
     },
     "dependencies": {

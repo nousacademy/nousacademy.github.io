@@ -14,7 +14,7 @@ export const phaedrus: BodymapDataset = {
         contains: ['eyes', 'brain']
     },
     {
-        id: 'chest',
+        id: 'diaphragm',
         type: 'region',
         tags: ['psyche:thumos', 'force:motion'],
         title: 'Thumos — The Noble Horse',
@@ -23,7 +23,7 @@ export const phaedrus: BodymapDataset = {
         contains: ['heart', 'lungs']
     },
     {
-        id: 'abdomen',
+        id: 'torso',
         type: 'region',
         tags: ['psyche:epithumia', 'descent:gravity'],
         title: 'Epithumia — The Wayward Horse',

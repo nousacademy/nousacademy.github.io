@@ -1,25 +1,14 @@
-import type { Body, BodyEntity, BodyNode, BodyRegion, Region } from './types';
+import type { BodyEntity, BodymapCollection } from '$lib/types/bodymap';
+// import type { BodyEntity } from './types';
 
-export function buildLookups(body: Body) {
-  const entitiesByKey = new Map<string, BodyEntity>();
-  const nodesByKey = new Map<string, BodyNode>();
-  const regionsByKey = new Map<string, BodyRegion>();
-  const nodeKeys = new Set<string>();
-  const regionKeys = new Set<string>();
+export function buildLookups(collection: BodymapCollection) {
+	const byId: Record<string, BodyEntity> = {};
 
-  for (const e of body.entities) {
-    if (e.type === 'node') {
-      entitiesByKey.set(e.node, e);
-      nodesByKey.set(e.node, e);
-      nodeKeys.add(e.node);
-    } else {
-      entitiesByKey.set(e.region, e);
-      regionsByKey.set(e.region, e);
-      regionKeys.add(e.region);
-    }
-  }
+	for (const e of collection.entities) {
+		byId[e.id] = e;
+	}
 
-  return { entitiesByKey, nodesByKey, regionsByKey, nodeKeys, regionKeys };
+	return { byId };
 }
 
 export function findEntityKeyFromClassList(
