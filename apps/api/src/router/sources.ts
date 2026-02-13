@@ -1,4 +1,4 @@
-import { DATASET_LOADERS, requireSource, SOURCE_META } from '../sources/registry';
+import { DATASET_LOADERS, loadSourceById, requireSource, SOURCE_META } from '../sources/registry';
 import type { SourceModule } from '../sources/types';
 
 
@@ -35,9 +35,8 @@ async function computeEtag(obj: unknown) {
 }
 
 export async function handleSources(request: Request): Promise<Response> {
-	const ids = Object.keys(DATASET_LOADERS);
+	const ids = Object.keys(DATASET_LOADERS).sort();
 
-	// ✅ fix never[]
 	const sources: SourcesResponseItem[] = [];
 
 	for (const id of ids) {
@@ -47,12 +46,7 @@ export async function handleSources(request: Request): Promise<Response> {
 			if (!meta) continue;
 
 			// loads + zod validates + caches
-			const mod = await requireSource(id as any);
-
-            if (mod instanceof Response){
-                continue;
-            }
-
+			const mod = await loadSourceById(id);
 			const regions = meta.regions;
 			const regionStats: Record<string, RegionStats> = {};
 

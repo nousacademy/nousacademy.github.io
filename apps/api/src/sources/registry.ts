@@ -40,6 +40,24 @@ export async function requireSource(searchParams: URLSearchParams): Promise<Sour
   }
 }
 
+export async function loadSourceById(id: string): Promise<SourceModule> {
+	const cached = cache.get(id);
+	if (cached) return cached;
+
+	const loader = DATASET_LOADERS[id as keyof typeof DATASET_LOADERS];
+	if (!loader) {
+		// throw so callers can decide to skip or return 500
+		throw new Error(`Unknown source "${id}"`);
+	}
+
+	const dataset = await loader();
+	const module = makeSource(dataset);
+
+	cache.set(id, module);
+	return module;
+}
+
+
 export const SOURCE_META: Record<keyof typeof DATASET_LOADERS, SourceMeta> = {
   sefer_yetzirah: {
     label: 'Sefer Yetzirah',
