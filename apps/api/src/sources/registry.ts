@@ -61,15 +61,15 @@ export async function loadSourceById(id: string): Promise<SourceModule> {
 export const SOURCE_META: Record<keyof typeof DATASET_LOADERS, SourceMeta> = {
   sefer_yetzirah: {
     label: 'Sefer Yetzirah',
-    regions: ['front', 'back']
+    regions: ['front']
   },
   phaedrus: {
     label: 'Plato — Phaedrus',
-    regions: ['front', 'brain']
+    regions: ['front']
   },
   hekhalot: {
     label: 'Hekhalot Literature',
-    regions: ['front', 'back']
+    regions: ['front']
   }
 };
 
