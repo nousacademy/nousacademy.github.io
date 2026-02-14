@@ -73,8 +73,8 @@ export async function handleSources(request: Request): Promise<Response> {
 
     sources.sort((a, b) => a.id.localeCompare(b.id));
 
-	const payload = { sources };
-	const etag = await computeEtag(payload);
+	const body = JSON.stringify({ sources });
+	const etag = `"${await computeEtag(body)}"`;
 
 	const inm = request.headers.get('if-none-match');
 	if (inm && inm === etag) {
@@ -87,7 +87,7 @@ export async function handleSources(request: Request): Promise<Response> {
 		});
 	}
 
-	return json(payload, {
+	return json(body, {
 		status: 200,
 		headers: {
 			ETag: etag,
