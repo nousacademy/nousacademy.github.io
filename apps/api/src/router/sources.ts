@@ -47,14 +47,14 @@ export async function handleSources(request: Request): Promise<Response> {
 
 			// loads + zod validates + caches
 			const mod = await loadSourceById(id);
-			const regions = meta.regions;
+			const regions = [ ...meta.regions ].sort();
 			const regionStats: Record<string, RegionStats> = {};
 
-			for (const r of regions) {
-				const col = mod.getCollection(r as any);
+			for (const region of regions) {
+				const col = mod.getCollection(region as any);
 				const entities = col.entities ?? [];
 
-				regionStats[r] = {
+				regionStats[region] = {
 					nodeCount: entities.filter((e: any) => e.type === 'node').length,
 					regionCount: entities.filter((e: any) => e.type === 'region').length
 				};
@@ -70,6 +70,8 @@ export async function handleSources(request: Request): Promise<Response> {
 			console.error(`Skipping invalid source ${id}`, err);
 		}
 	}
+
+    sources.sort((a, b) => a.id.localeCompare(b.id));
 
 	const payload = { sources };
 	const etag = await computeEtag(payload);
