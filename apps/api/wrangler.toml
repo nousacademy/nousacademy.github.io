@@ -1,5 +1,9 @@
 name = "bodymap-api"
 main = "src/index.ts"
 compatibility_date = "2026-01-01"
+enabled = false
+invocation_logs = true
+[observability]
+[observability.logs]
 
 # public API, no bindings needed yet

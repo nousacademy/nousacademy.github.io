@@ -25,6 +25,23 @@ function json(body: unknown, init?: ResponseInit) {
 	});
 }
 
+function normalizeETagValue(v: string) {
+	return v.trim().replace(/^W\//, '').replace(/^"+|"+$/g, '');
+  }
+  
+  function ifNoneMatchHasETag(inm: string | null, etag: string) {
+	if (!inm) return false;
+  
+	const want = normalizeETagValue(etag);
+  
+	// If-None-Match can be: W/"x", "x", "x", "y"
+	return inm
+	  .split(',')
+	  .map((s) => normalizeETagValue(s))
+	  .some((candidate) => candidate === want);
+  }
+  
+
 async function computeEtag(obj: unknown) {
 	const data = new TextEncoder().encode(JSON.stringify(obj));
 	const hash = await crypto.subtle.digest('SHA-256', data);
@@ -73,11 +90,12 @@ export async function handleSources(request: Request): Promise<Response> {
 
     sources.sort((a, b) => a.id.localeCompare(b.id));
 
-	const body = JSON.stringify({ sources });
-	const etag = `"${await computeEtag(body)}"`;
+	const payload = { sources };
+	const etag = `"${await computeEtag(JSON.stringify(payload))}"`;
+
 
 	const inm = request.headers.get('if-none-match');
-	if (inm && inm === etag) {
+	if (ifNoneMatchHasETag(inm, etag)) {
 		return new Response(null, {
 			status: 304,
 			headers: {
@@ -87,7 +105,7 @@ export async function handleSources(request: Request): Promise<Response> {
 		});
 	}
 
-	return json(body, {
+	return json(payload, {
 		status: 200,
 		headers: {
 			ETag: etag,
