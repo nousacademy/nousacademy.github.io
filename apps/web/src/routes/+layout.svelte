@@ -1,7 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/styles/bodymap.css';
-	import { bodymapSource } from '$lib/stores/bodymap';
+	import Header from '$lib/components/header/Header.svelte';
 
 	let { children } = $props();
 </script>
@@ -16,28 +16,7 @@
 	/>
 </svelte:head>
 
-<header class="site-header">
-	<div class="left">
-		<a href="/" class="logo">
-			<img src="img/i-exist.jpg" alt="I Exist Logo" />
-		</a>
-	</div>
-
-	<nav class="center">
-		<!-- <a href="/map/front">Front</a>
-	  <a href="/map/back">Back</a> -->
-	</nav>
-
-	<div class="right">
-		<label for="knowledge-set" class="sr-only"> Knowledge set </label>
-
-		<select id="knowledge-set" class="knowledge-select" bind:value={$bodymapSource} aria-label="Select source">
-			<option value="sefer_yetzirah">Sefer Yetzirah</option>
-			<option value="phaedrus">Phaedrus</option>
-			<option value="hekhalot">Hekhalot</option>
-		</select>
-	</div>
-</header>
+<Header />
 
 <main class="site-main">
 	{@render children()}

@@ -1,5 +1,6 @@
 import type { ApiErrorPayload, ApiErrorCode } from './errors';
 import { apiError } from './errors';
+// import { corsHeaders } from './cors';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*'
@@ -11,16 +12,6 @@ export function json(data: unknown, status = 200) {
     headers: {
       ...CORS_HEADERS,
       'content-type': 'application/json; charset=utf-8'
-    }
-  });
-}
-
-export function corsPreflight() {
-  return new Response(null, {
-    headers: {
-      ...CORS_HEADERS,
-      'Access-Control-Allow-Methods': 'GET,OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
     }
   });
 }

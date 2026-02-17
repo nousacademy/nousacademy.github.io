@@ -3,8 +3,6 @@ import type { SourceMeta, SourceModule } from './types';
 import type { BodymapDataset } from './data/types';
 import { makeSource } from './utils/makeSource';
 
-
-
 // Lazy dataset loaders (only load what’s requested)
 export const DATASET_LOADERS: Record<string, () => Promise<BodymapDataset>> = {
   sefer_yetzirah: async () => (await import('./data/sefer_yetzirah')).seferYetzirah,
